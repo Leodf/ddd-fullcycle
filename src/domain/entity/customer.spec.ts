@@ -49,4 +49,22 @@ describe('Customer unit tests', () => {
         expect(customer.rewardPoints).toBe(20)
 
     })
+    test('Should change Address', () => {
+        const address = new Address("street 1", 123, '123456-789', 'São Paulo')
+        const customer = new Customer("1", "Customer 1", address)
+        expect(customer.address).toEqual({
+            _street: 'street 1',
+            _number: 123,
+            _zip: '123456-789',
+            _city: 'São Paulo'
+        })
+        const address2 = new Address("street 2", 456, '789456-123', 'Rio de Janeiro')
+        customer.changeAddress(address2)
+        expect(customer.address).toEqual({
+            _street: 'street 2',
+            _number: 456,
+            _zip: '789456-123',
+            _city: 'Rio de Janeiro'
+        })
+    })
 })
